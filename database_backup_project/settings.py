@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+# importing dj_database_url for deployment purposes
+import dj_database_url
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +29,7 @@ SECRET_KEY = 'django-insecure-qv0=(4o=jxksf#16k^scwvzok8=^4fftm*@+pa)@&sr)!6wb&x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -78,8 +82,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'database_backup_project.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# Default sqlite3 Database
+# # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -87,6 +91,35 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+
+# Local postgreSQL database
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'django_dbbackup',
+       'USER': 'postgres',
+       'PASSWORD': 'sayed8901',
+       'HOST': 'localhost',
+       'PORT': '5432',
+   }
+}
+
+
+
+
+# # onRender postgreSQL database external URL link
+# # Database configuration for PostgreSQL with on-render development server
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Replace this value with your local database's connection string.        
+#         default='postgresql://django_dbbackup_user:XqMaaZ2BSmH55dkMnmU9sqLhRq4Fp1pt@dpg-cv8sueofnakc73e8mor0-a.oregon-postgres.render.com/django_dbbackup',
+#     )
+# }
+
+
+
 
 
 # Password validation
@@ -129,6 +162,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 
 DBBACKUP_CLEANUP_KEEP = 7

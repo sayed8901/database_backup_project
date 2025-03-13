@@ -1,9 +1,12 @@
 APScheduler==3.11.0
 asgiref==3.8.1
+dj-database-url==2.3.0
 Django==4.2.4
 django-apscheduler==0.7.0
 django-dbbackup==4.2.1
+psycopg2-binary==2.9.10
 pytz==2025.1
 sqlparse==0.5.3
+typing_extensions==4.12.2
 tzdata==2025.1
 tzlocal==5.3.1
