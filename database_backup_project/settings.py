@@ -50,6 +50,9 @@ INSTALLED_APPS = [
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'dbbackup'}
 
+DBBACKUP_CLEANUP_KEEP = 7
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,13 +88,12 @@ WSGI_APPLICATION = 'database_backup_project.wsgi.application'
 # Default sqlite3 Database
 # # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Local postgreSQL database
@@ -108,7 +110,6 @@ DATABASES = {
 
 
 
-
 # # onRender postgreSQL database external URL link
 # # Database configuration for PostgreSQL with on-render development server
 # DATABASES = {
@@ -117,7 +118,6 @@ DATABASES = {
 #         default='postgresql://django_dbbackup_user:XqMaaZ2BSmH55dkMnmU9sqLhRq4Fp1pt@dpg-cv8sueofnakc73e8mor0-a.oregon-postgres.render.com/django_dbbackup',
 #     )
 # }
-
 
 
 
@@ -162,8 +162,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-
-DBBACKUP_CLEANUP_KEEP = 7
